@@ -22,5 +22,3 @@ module.exports = function ({ environment }) {
 
   return logger
 }
-
-// https://github.com/winstonjs/winston/commit/391aa2bcf40991777d828637bea59ea6571df823
