@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+  express:
+    build: .
+    container_name: express
+    env_file:
+      - ./express.env
+    ports:
+      - "8000:8000"
+    restart: always
+    volumes: 
+      - ./data/log:/shintech/log
