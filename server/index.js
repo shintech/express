@@ -2,26 +2,43 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const compression = require('compression')
-const morgan = require('morgan')
 const Router = require('./router')
 
 module.exports = ({ logger, port, environment }) => {
   const server = express()
   const api = Router()
 
-  if (environment === 'development') server.use(morgan('dev'))
-
   server.use('/public', express.static(path.join(__dirname, '../public')))
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
     .use(compression())
 
-    .use((req, res, next) => {
+    .use('/api', (req, res, next) => {
+      res.on('finish', () => {
+        logger.info(`${res.statusCode} - ${req.method} - ${req.url}`)
+      })
+
+      let headers = {
+        'Content-Type': 'application/json'
+      }
+
+      res.set(headers)
+
       req.logger = logger
       next()
     })
 
     .use('/api', api)
+
+    .use((req, res) => {
+      let response = {
+        status: 'not found'
+      }
+
+      res.status(404)
+      res.write(JSON.stringify(response))
+      res.end()
+    })
 
   return server
 }
