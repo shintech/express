@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path')
 const compression = require('compression')
 const Router = require('./router')
 
@@ -8,8 +7,7 @@ module.exports = ({ logger, port, environment }) => {
   const server = express()
   const api = Router()
 
-  server.use('/public', express.static(path.join(__dirname, '../public')))
-    .use(bodyParser.urlencoded({ extended: true }))
+  server.use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
     .use(compression())
 

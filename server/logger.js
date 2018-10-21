@@ -1,4 +1,5 @@
 const winston = require('winston')
+const path = require('path')
 
 module.exports = function ({ environment }) {
   let logger = winston.createLogger({
@@ -6,8 +7,8 @@ module.exports = function ({ environment }) {
     format: winston.format.json(),
 
     transports: [
-      new winston.transports.File({ filename: 'error.log', level: 'error' }),
-      new winston.transports.File({ filename: 'combined.log' })
+      new winston.transports.File({ filename: path.join('log', 'error.log'), level: 'error' }),
+      new winston.transports.File({ filename: path.join('log', 'combined.log') })
     ]
   })
 
