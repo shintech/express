@@ -1,11 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const compression = require('compression')
-const Router = require('./router')
+const router = require('./router')
 
 module.exports = ({ logger, port, environment }) => {
   const server = express()
-  const api = Router()
 
   server.use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
@@ -26,7 +25,7 @@ module.exports = ({ logger, port, environment }) => {
       next()
     })
 
-    .use('/api', api)
+    .use('/api', router)
 
     .use((req, res) => {
       let response = {
