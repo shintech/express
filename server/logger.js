@@ -2,6 +2,14 @@ const winston = require('winston')
 const path = require('path')
 
 module.exports = function ({ environment }) {
+  if (environment === 'test') {
+    return winston.createLogger({
+      transports: [
+        new winston.transports.File({ filename: path.join('log', 'test.log'), level: 'warn' })
+      ]
+    })
+  }
+
   let logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
