@@ -1,12 +1,13 @@
 {
   "name": "express",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "express": "^4.16.4",
+    "shintech-logger": "^0.0.1",
     "winston": "^3.1.0"
   },
   "scripts": {

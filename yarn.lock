@@ -3481,6 +3481,10 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
 
+shintech-logger@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/shintech-logger/-/shintech-logger-0.0.1.tgz#09998f1bb7c497c0519164f82b0bd8e7e78a86da"
+
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
